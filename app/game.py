@@ -40,6 +40,11 @@ class Connect4:
                         return j
         return None
 
+    def is_tie(self):
+        if sum(self.top.values()) == 0:
+            return "TIE"
+        return None
+
     def check_win(self):
         row = self.is_row_connected()
         col = self.is_column_connected()
@@ -55,6 +60,9 @@ class Connect4:
 
     def play(self, col):
         self.move(col)
+        tie = self.is_tie()
+        if tie:
+            return tie
         winner = self.check_win()
         if winner:
             winner = TurnEnum(winner)

@@ -82,11 +82,18 @@ def make_move(game_id: int, column: int, db: Session = Depends(get_db)):
         )
     if winner:
         crud.delete_game_by_id(db, game_id)
-        return JSONResponse(
-            status_code=200,
-            content={"message": f"Player {winner} wins!", "id": game_id, "board": game.matrix.tolist(),
-                     "turn": game.turn.value},
-        )
+        if winner != "TIE":
+            return JSONResponse(
+                status_code=200,
+                content={"message": f"Player {winner} wins!", "id": game_id, "board": game.matrix.tolist(),
+                         "turn": game.turn.value},
+            )
+        else:
+            return JSONResponse(
+                status_code=200,
+                content={"message": f"Game tied!", "id": game_id, "board": game.matrix.tolist(),
+                         "turn": game.turn.value},
+            )
     else:
         crud.update_game(db, db_game, game)
         return JSONResponse(
