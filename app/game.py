@@ -8,8 +8,8 @@ N = 7
 
 
 class TurnEnum(Enum):
-    Yellow = "Yellow"
-    Red = "Red"
+    Yellow = "Y"
+    Red = "R"
 
 
 class Connect4:
@@ -65,7 +65,7 @@ class Connect4:
             return tie
         winner = self.check_win()
         if winner:
-            winner = TurnEnum(winner)
+            winner = "Yellow" if winner == "Y" else "Red"
         self.change_turn()
         return winner
 
