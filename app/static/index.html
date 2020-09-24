@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connect 4 REST API</title>
+    <style>
+        body {
+            background-color: lightgrey;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<h1> Connect 4 REST API </h1>
+
+<p> This is a REST API service which allows playing multiple connect 4 games simultaneously. You can try it live on <a href="https://connect-four-rest.herokuapp.com/">connect-four-rest.herokuapp.com.</a></p>
+
+
+<h2> Usage </h2>
+
+<p>You can see documentation of API in both <a href="https://connect-four-rest.herokuapp.com/docs">swagger</a> and <a href="https://connect-four-rest.herokuapp.com/redoc">redoc</a> style.</p>
+
+<h3> How to use it? </h3>
+<ul>
+    <li>Start a new game by <strong>POST</strong> request to <code>/start</code> endpoint.</li>
+    <li>You can see current state of the game by <strong>GET</strong> request to <code>/game/{game_id}</code>.</li>
+    <li>You can abort game by <strong>DELETE</strong> request to <code>/game/{game_id}</code>.</li>
+    <li>You can throw stone in game at any column by <strong>PUT</strong> request to <code>/game/{game_id}</code>. </li>
+</ul>
+
+</body>
+</html>
